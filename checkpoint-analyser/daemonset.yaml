@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app.kubernetes.io/component: checkpoint-analyser
+    app.kubernetes.io/name: checkpointctl
+  name: checkpoint-analyser
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: checkpoint-analyser
+      app.kubernetes.io/name: checkpointctl
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: checkpoint-analyser
+        app.kubernetes.io/name: checkpointctl
+    spec:
+      containers:
+      - name: checkpointctl
+        command:
+        - /bin/sh
+        - -c
+        - |
+          sleep infinity
+        image: quay.io/openshift-examples/checkpoint-analyser:main
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 0
+          privileged: true
+        volumeMounts:
+        - mountPath: /checkpoints
+          name: checkpoints
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/os: linux
+      securityContext: {}
+      serviceAccount: hostmount-anyuid
+      serviceAccountName: hostmount-anyuid
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/checkpoints
+        name: checkpoints
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 100%
+    type: RollingUpdate
