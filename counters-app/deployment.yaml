@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counters
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: counters
+  template:
+    metadata:
+      labels:
+        app: counters
+    spec:
+      containers:
+      - image: quay.io/openshift-examples/forensic-container-checkpointing-and-analysis/counters-app:main
+        name: counter
