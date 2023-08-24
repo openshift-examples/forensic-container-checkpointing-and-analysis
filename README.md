@@ -41,8 +41,8 @@ And change/add
 ```yaml
 spec:
   customNoUpgrade:
-	enabled:
-  	- ContainerCheckpoint
+    enabled:
+  	  - ContainerCheckpoint
   featureSet: CustomNoUpgrade
 ```
 
@@ -232,7 +232,7 @@ ds             0x0                 0
 es             0x0                 0
 fs             0x0                 0
 gs             0x0                 0
-(gdb) sh-5.2# 
+(gdb) sh-5.2#
 
 ```
 
