@@ -1,11 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  creationTimestamp: "2023-08-23T15:48:38Z"
   name: system:openshift:scc:hostmount-anyuid
-  namespace: demo
-  resourceVersion: "9794285"
-  uid: 40bd080c-209d-4172-bc56-7e034102b657
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -13,4 +9,3 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: hostmount-anyuid
-  namespace: demo
