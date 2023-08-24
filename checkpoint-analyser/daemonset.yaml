@@ -23,7 +23,7 @@ spec:
         - -c
         - |
           sleep infinity
-        image: quay.io/openshift-examples/checkpoint-analyser:main
+        image: quay.io/openshift-examples/forensic-container-checkpointing-and-analysis/checkpoint-analyser:main
         imagePullPolicy: IfNotPresent
         securityContext:
           runAsUser: 0
