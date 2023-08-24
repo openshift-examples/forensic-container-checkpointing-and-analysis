@@ -191,6 +191,8 @@ sh-5.2# ls  checkpoint/pages-*
 checkpoint/pages-1.img
 sh-5.2# grep -ao RANDOM_1432_KEY checkpoint/pages-*
 RANDOM_1432_KEY
+sh-5.2# tar xvf rootfs-diff.tar
+app/test-file
 sh-5.2# cd checkpoint/
 sh-5.2# pwd
 /tmp/checkpoint/checkpoint
