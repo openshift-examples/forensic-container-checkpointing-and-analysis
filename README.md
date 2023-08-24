@@ -157,13 +157,15 @@ $ curl -k -X POST --header "Authorization: Bearer $TOKEN"  https://api.demo.open
 
 ## Analyze checkpoint
 
+### Get pod where the checkpoint is located
+
 ```bash
-
-# Get pod where the checkpoint is located
-
 $ export CHECKPOINT_POD_NAME=$(oc get pods -l app.kubernetes.io/component=checkpoint-analyser -o jsonpath="{.items[?(@.spec.nodeName=='${NODE_NAME}')].metadata.name}")
+```
 
+### Use checkpoint analze pod
 
+```bash
 $ oc rsh $CHECKPOINT_POD_NAME
 sh-5.2# cd /checkpoints/
 sh-5.2# ls
@@ -238,4 +240,8 @@ gs             0x0                 0
 
 ```
 
+### Copy checkpoint to your laptop for local analyze
 
+```bash
+$ oc cp $CHECKPOINT_POD_NAME:/checkpoints/checkpoint-counters-857d7978fd-jnkck_demo-counter-2023-08-24T11\:24\:18Z.tar checkpoint-counters.tar
+```
