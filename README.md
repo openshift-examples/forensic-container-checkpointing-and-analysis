@@ -24,7 +24,7 @@ You will lose the support status of your cluster, because we enabled not support
 ### Disable / pause MCP to rollout all changes at once
 
 ```bash
-$ oc patch mcp/{master,worker} --type merge -p '{"spec":{"paused": false}}'
+$ oc patch mcp/{master,worker} --type merge -p '{"spec":{"paused": true}}'
 machineconfigpool.machineconfiguration.openshift.io/master patched
 machineconfigpool.machineconfiguration.openshift.io/worker patched
 
