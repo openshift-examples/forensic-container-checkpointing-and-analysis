@@ -69,20 +69,20 @@ version: 4.13.0
 metadata:
   name: 05-worker-enable-criu
   labels:
-	machineconfiguration.openshift.io/role: worker
+    machineconfiguration.openshift.io/role: worker
 storage:
   files:
   - path: /etc/crio/crio.conf.d/05-enable-criu
-	mode: 0644
-	overwrite: true
-	contents:
-  	inline: |
-    	[crio.runtime]
-    	enable_criu_support = true
+    mode: 0644
+    overwrite: true
+    contents:
+      inline: |
+        [crio.runtime]
+        enable_criu_support = true
 EOF
 
 $ butane  05-worker-enable-criu.bu -o 05-worker-enable-criu.yaml
- oc apply -f 05-worker-enable-criu.yaml
+$ oc apply -f 05-worker-enable-criu.yaml
 machineconfig.machineconfiguration.openshift.io/05-worker-enable-criu created
 ```
 
